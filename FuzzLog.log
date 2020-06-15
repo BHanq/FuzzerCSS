@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2020-06-15T20:00:16.037027Z</date>
+  <millis>1592251216037</millis>
+  <nanos>27000</nanos>
+  <sequence>0</sequence>
+  <logger>Fuzzer_Log</logger>
+  <level>INFO</level>
+  <class>main</class>
+  <method>checkVersionNumber</method>
+  <thread>1</thread>
+  <message>Version number crashed with a value of 80</message>
+</record>
+<record>
+  <date>2020-06-15T20:00:18.391700Z</date>
+  <millis>1592251218391</millis>
+  <nanos>700000</nanos>
+  <sequence>1</sequence>
+  <logger>Fuzzer_Log</logger>
+  <level>INFO</level>
+  <class>main</class>
+  <method>checkHeader</method>
+  <thread>1</thread>
+  <message>Header field crashed with a value of 117</message>
+</record>
+<record>
+  <date>2020-06-15T20:00:19.282207Z</date>
+  <millis>1592251219282</millis>
+  <nanos>207000</nanos>
+  <sequence>2</sequence>
+  <logger>Fuzzer_Log</logger>
+  <level>INFO</level>
+  <class>main</class>
+  <method>checkCommentSize</method>
+  <thread>1</thread>
+  <message>Comment field crashed with a length of 1650 characters</message>
+</record>
+</log>
