@@ -16,46 +16,7 @@ public class main {
     static byte[] magicNb,version, author, authorHeader,WidthHeightHeader,Width,Height,ColTaSizeHeader,ColTaSize,ColTableHeader,ColTable,commentHeader,comment,Pixels,AABytes;
     private static final Logger LOGGER = Logger.getLogger("Fuzzer_Log");
 
-    public static void fillWithGoodParam(){
-        magicNb = hexStringToByteArray("ABCD");//shortToByte((short) i, true);//
-        version = shortToByte((short) 100, true);//hexStringToByteArray("6400");//
-        authorHeader = hexStringToByteArray("01");//randomByteGenerator(10000);//
-        author = hexStringToByteArray("0152616D696E00");//randomByteGenerator(10000);//
-        WidthHeightHeader = hexStringToByteArray("02");
-        Width = intToByte( 2, true);//hexStringToByteArray("02000000");//intToByte(4,2,true);
-        Height = intToByte( 2, true);
-        ColTaSizeHeader = hexStringToByteArray("0A");
-        ColTaSize = intToByte( 2, true);//hexStringToByteArray("08000000");
-        ColTableHeader = hexStringToByteArray("0B");
-        ColTable = hexStringToByteArray("FFFFFFFFFFFFFFFF");
-        commentHeader = hexStringToByteArray("0C");
-        comment = hexStringToByteArray("0C48656C6C6F00");
-        Pixels = hexStringToByteArray("00010100");
-        AABytes = hexStringToByteArray("AA");
-    }
-    public static void writeToFile(){
-        try{
-        inputNumber++;
-        FileOutputStream os = new FileOutputStream("inputBenja" + inputNumber + ".img");
-        os.write(magicNb);
-        os.write(version);
-        os.write(authorHeader);
-        os.write(author);
-        os.write(WidthHeightHeader);
-        os.write(Width);
-        os.write(Height);
-        os.write(ColTaSizeHeader);
-        os.write(ColTaSize);
-        os.write(ColTableHeader);
-        os.write(ColTable);
-        os.write(commentHeader);
-        os.write(comment);
-        os.write(Pixels);
-        os.close();
-        } catch (IOException x) {
-            System.err.println(x);
-        }
-    }
+
     public static void main(String[] args) {
         try {
             LOGGER.addHandler(new FileHandler("FuzzLog.log"));
@@ -76,11 +37,23 @@ public class main {
         }
     }
 
+    /**
+     * Check all textfields (Author & Comment)
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     private static void checkTextfield() throws InterruptedException, TimeoutException, IOException {
         checkAuthorSize();
         checkCommentSize();
     }
 
+    /**
+     * Check some bound of the magic number
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     public static void checkMagicNumber() throws InterruptedException, TimeoutException, IOException {
         fillWithGoodParam();
         for(short i = -10 ; i <10; i++) { //Try some value from -32760 to 32760
@@ -93,6 +66,12 @@ public class main {
         }
     }
 
+    /**
+     * Check all version possible
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     public static void checkVersionNumber() throws InterruptedException, TimeoutException, IOException {
         fillWithGoodParam();
         for(Byte i = Byte.MIN_VALUE ; i <Byte.MAX_VALUE; i++) {
@@ -105,6 +84,12 @@ public class main {
         }
     }
 
+    /**
+     * Check All Header possible
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     public static void checkHeader() throws InterruptedException, TimeoutException, IOException {
         fillWithGoodParam();
         for(Byte i = Byte.MIN_VALUE ; i <Byte.MAX_VALUE; i++) {
@@ -117,6 +102,12 @@ public class main {
         }
     }
 
+    /**
+     * Check the size of a author name field, between 0 and 100000 characters
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     public static void checkAuthorSize() throws InterruptedException, TimeoutException, IOException {
         fillWithGoodParam();
         for(int i = 0 ; i <10000; i+=10) {
@@ -132,6 +123,12 @@ public class main {
         }
     }
 
+    /**
+     * Check the size of a comment field, between 0 and 100000 characters
+     * @throws InterruptedException
+     * @throws TimeoutException
+     * @throws IOException
+     */
     public static void checkCommentSize() throws InterruptedException, TimeoutException, IOException {
         fillWithGoodParam();
         for(int i = 0 ; i <100000; i+=10) {
@@ -148,7 +145,7 @@ public class main {
     }
 
     /**
-     * Check all the kind of variation for the height & the width
+     * Check all the kind of variation for the height & the width dema
      * @throws InterruptedException
      * @throws TimeoutException
      * @throws IOException
@@ -305,6 +302,54 @@ public class main {
            executeCommand("rm  inputBenja" +inputNumber +".img");
         }
         return false;
+    }
+
+    /**
+     * Fill all the field with good values
+     */
+    public static void fillWithGoodParam(){
+        magicNb = hexStringToByteArray("ABCD");//shortToByte((short) i, true);//
+        version = shortToByte((short) 100, true);//hexStringToByteArray("6400");//
+        authorHeader = hexStringToByteArray("01");//randomByteGenerator(10000);//
+        author = hexStringToByteArray("0152616D696E00");//randomByteGenerator(10000);//
+        WidthHeightHeader = hexStringToByteArray("02");
+        Width = intToByte( 2, true);//hexStringToByteArray("02000000");//intToByte(4,2,true);
+        Height = intToByte( 2, true);
+        ColTaSizeHeader = hexStringToByteArray("0A");
+        ColTaSize = intToByte( 2, true);//hexStringToByteArray("08000000");
+        ColTableHeader = hexStringToByteArray("0B");
+        ColTable = hexStringToByteArray("FFFFFFFFFFFFFFFF");
+        commentHeader = hexStringToByteArray("0C");
+        comment = hexStringToByteArray("0C48656C6C6F00");
+        Pixels = hexStringToByteArray("00010100");
+        AABytes = hexStringToByteArray("AA");
+    }
+
+    /**
+     * Write all fields to the file
+     */
+    public static void writeToFile(){
+        try{
+            inputNumber++;
+            FileOutputStream os = new FileOutputStream("inputBenja" + inputNumber + ".img");
+            os.write(magicNb);
+            os.write(version);
+            os.write(authorHeader);
+            os.write(author);
+            os.write(WidthHeightHeader);
+            os.write(Width);
+            os.write(Height);
+            os.write(ColTaSizeHeader);
+            os.write(ColTaSize);
+            os.write(ColTableHeader);
+            os.write(ColTable);
+            os.write(commentHeader);
+            os.write(comment);
+            os.write(Pixels);
+            os.close();
+        } catch (IOException x) {
+            System.err.println(x);
+        }
     }
 
     /**

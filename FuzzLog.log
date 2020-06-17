@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2020-06-16T15:24:06.869933Z</date>
-  <millis>1592321046869</millis>
-  <nanos>933000</nanos>
+  <date>2020-06-17T11:30:01.720752Z</date>
+  <millis>1592393401720</millis>
+  <nanos>752000</nanos>
   <sequence>0</sequence>
   <logger>Fuzzer_Log</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Version number crashed with a value of 80 in decimal and 50 in hexa</message>
 </record>
 <record>
-  <date>2020-06-16T15:24:07.794627Z</date>
-  <millis>1592321047794</millis>
-  <nanos>627000</nanos>
+  <date>2020-06-17T11:30:02.424633Z</date>
+  <millis>1592393402424</millis>
+  <nanos>633000</nanos>
   <sequence>1</sequence>
   <logger>Fuzzer_Log</logger>
   <level>INFO</level>
@@ -26,9 +26,9 @@
   <message>Header field crashed with a value of 117 in decimal and 75 in hexa</message>
 </record>
 <record>
-  <date>2020-06-16T15:24:10.111053Z</date>
-  <millis>1592321050111</millis>
-  <nanos>53000</nanos>
+  <date>2020-06-17T11:30:04.724405Z</date>
+  <millis>1592393404724</millis>
+  <nanos>405000</nanos>
   <sequence>2</sequence>
   <logger>Fuzzer_Log</logger>
   <level>INFO</level>
@@ -38,9 +38,9 @@
   <message>Comment field crashed with a length of 1650 characters</message>
 </record>
 <record>
-  <date>2020-06-16T15:24:10.711703Z</date>
-  <millis>1592321050711</millis>
-  <nanos>703000</nanos>
+  <date>2020-06-17T11:30:05.238732Z</date>
+  <millis>1592393405238</millis>
+  <nanos>732000</nanos>
   <sequence>3</sequence>
   <logger>Fuzzer_Log</logger>
   <level>INFO</level>
@@ -48,5 +48,29 @@
   <method>checkOnlyHeight</method>
   <thread>1</thread>
   <message>Height field crashed with a value of -100000</message>
+</record>
+<record>
+  <date>2020-06-17T11:31:07.331201Z</date>
+  <millis>1592393467331</millis>
+  <nanos>201000</nanos>
+  <sequence>4</sequence>
+  <logger>Fuzzer_Log</logger>
+  <level>INFO</level>
+  <class>main</class>
+  <method>checkBothWidthHeight</method>
+  <thread>1</thread>
+  <message>Width &amp; Height fields crashed with both a value of 50000</message>
+</record>
+<record>
+  <date>2020-06-17T11:31:08.433995Z</date>
+  <millis>1592393468433</millis>
+  <nanos>995000</nanos>
+  <sequence>5</sequence>
+  <logger>Fuzzer_Log</logger>
+  <level>INFO</level>
+  <class>main</class>
+  <method>checkWrongPixels</method>
+  <thread>1</thread>
+  <message>Pixels field crashed with a pixel with the value of 117 in decimal and 75 in hexa</message>
 </record>
 </log>
